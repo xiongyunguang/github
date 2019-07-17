@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.client.ClientDao">
+ 
+<resultMap id="client" type="com.vo.ClientVO">
+  	 <id column="cid" property="cid"/>
+  	 <result column="cname" property="cname"/>
+  	 <result column="csex" property="csex"/>
+  	 <result column="cage" property="cage"/>
+  	 <result column="cphone" property="cphone"/>
+  	 <result column="cemail" property="cemail"/>
+  	 <result column="cprofession" property="cprofession"/>
+  	 <result column="cstate" property="cstate"/>
+  	 <result column="ccontext" property="ccontext"/>
+  	 <result column="cimage" property="cimage"/>
+  	 <association column="clocation" property="clocation" resultMap="com.dao.address.AddressDao.address"/>
+  	 <association column="userid" property="userid" resultMap="com.dao.user.UserDao.user"/> 
+</resultMap>
+<!-- 查指定客户的所有信息 -->
+	<select id="showOneClient" parameterType="com.vo.ClientVO" resultMap="client">
+		SELECT * FROM CLIENT,address,USER WHERE cid=#{cid} 
+		AND user.`uid`=client.`userid`
+		AND client.`clocation`=address.`aid`
+	</select>
+  
+ <!-- 查指定员工的所有客户 --> 
+	<select id="showAllClient" resultMap="client" parameterType="com.vo.UserVO">
+		SELECT * FROM CLIENT,ADDRESS,`USER` 
+		WHERE  USER.`UID`=CLIENT.`USERID`
+		AND CLIENT.`CLOCATION`=ADDRESS.`AID`
+		AND CLIENT.`USERID`=#{uid}
+	</select>
+   
+   <!-- 录入新增客户信息 --> 
+  
+  <insert id="addNewClient" parameterType="com.vo.ClientVO">
+  		INSERT INTO CLIENT(CNAME,CSEX,CAGE,CPHONE,CEMAIL,CPROFESSION,CSTATE,CCONTEXT,CLOCATION,CIMAGE,USERID) 
+		VALUES(#{cname},#{csex},#{cage},#{cphone},#{cemail},#{cprofession},#{cstate},#{ccontext},#{clocation.aid},#{cimage},#{userid.uid})
+  </insert>
+  
+   <!-- 修改客户信息 -->
+ 
+  <update id="changeClient" parameterType="com.vo.ClientVO">
+  		UPDATE CLIENT SET CNAME=#{cname},CSEX=#{csex},CAGE=#{cage},CPHONE=#{cphone},CEMAIL=#{cemail},
+  		CPROFESSION=#{cprofession},CSTATE=#{cstate},CCONTEXT=#{ccontext},CLOCATION=#{clocation.aid},CIMAGE=#{cimage} 
+  		WHERE CID=#{cid}	
+  </update>
+  
+</mapper>
