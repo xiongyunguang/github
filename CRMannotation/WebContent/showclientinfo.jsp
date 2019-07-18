@@ -97,10 +97,10 @@
 	 -->
 		 
 		<head>
-			<title>修改客户信息</title>
+			<title>查看客户信息</title>
 		</head>
 
-		<form action="updateClient" method="post" name="">
+		<form action="" method="post" name="">
 
 			<table width="100%" border="0" cellspacing="0" cellpadding="0"
 				class="pad5">
@@ -113,7 +113,7 @@
 									<img src="abc/img2.gif" width="16" height="16">
 								</td>
 								<td width="98%" align="left" class="lan13b">
-									客户管理 > 修改客户消息
+									客户管理 > 查看客户消息
 								</td>
 							</tr>
 						</table>
@@ -125,10 +125,7 @@
 									名字：
 								</td>
 								<td width="36%" align="left" class="even padl5">
-								  <input type=text name="cid" id="cid" style="display: none;" maxlength="32"
-										class=inputnormal value="${clientOne.cid }">
-									<input type=text name="cname" id="cname" required="required" maxlength="32"
-										class=inputnormal value="${clientOne.cname }">
+								  ${clientOneInfo.cname }
 									<font color="red">*</font>
 								</td>
 
@@ -141,7 +138,8 @@
 									性别：
 								</td>
 								<td width="36%" align="left" class="even padl5">
-									<input type=text name="csex" id="csex" maxlength="32" class="inputnormal" value="${clientOne.csex }"><font color="red">*</font>
+									${clientOneInfo.csex }
+									<font color="red">*</font>
 								</td>
 								
 							</tr>
@@ -151,8 +149,7 @@
 									年龄：
 								</td>
 								<td width="36%" align="left" class="even padl5">
-									<input type=text name="cage" required="required" id="cage" maxlength="32" class="inputnormal"
-										value="${clientOne.cage }">
+									${clientOneInfo.cage }
 								</td>
 							</tr>
 							<tr>
@@ -160,19 +157,8 @@
 								<td width="14%" align="right" class="COLLECTION">
 									联系电话：
 								</td>
-								<script>
-									function checkPhone() {
-										var phone=document.getElementById("cphone").value;
-										if(!(/^1[34578]\d{9}$/.test(phone))){
-											alert("手机号码有误，请重填");
-											document.getElementById("cphone").value='';
-										}
-									}
-								
-								</script>
 								<td width="36%" align="left" class="even padl5">
-									<input type=text name="cphone" id="cphone" required="required" onblur="checkPhone()" maxlength="32" class="inputnormal"
-										value="${clientOne.cphone }">
+									${clientOneInfo.cphone }
 								</td>
 							</tr>
 							<tr>
@@ -180,20 +166,8 @@
 								<td width="14%" align="right" class="COLLECTION">
 									邮箱：
 								</td>
-								<script>
-									function checkEmail() {
-										var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$");
-										var email=document.getElementById("cemail").value;
-										if(!(reg.test(email))){
-											alert("邮箱有误，请重填");
-											document.getElementById("cemail").value='';
-										}
-									}
-								
-								</script>
 								<td width="36%" align="left" class="even padl5">
-									<input type=text name="cemail" id="cemail" required="required" onblur="checkEmail()" maxlength="32"
-										class="inputnormal" value="${clientOne.cemail }">
+									${clientOneInfo.cemail }
 								</td>
 							</tr>
 							</tr>
@@ -203,8 +177,7 @@
 									职业：
 								</td>
 								<td width="36%" align="left" class="even padl5">
-									<input type=text name="cprofession" id="cprofession" maxlength="32"
-										class="inputnormal" value="${clientOne.cprofession }">
+									${clientOneInfo.cprofession }
 								</td>
 							</tr>
 							</tr>
@@ -215,8 +188,7 @@
 									客户状态
 								</td>
 								<td width="36%" align="left" class="even padl5">
-									
-									<input class="Wdate" type="text" name="cstate" id="cstate" required="required" maxlength="32" value="${clientOne.cstate }"/>
+									${clientOneInfo.cstate }
 								</td>
 							</tr>
 							
@@ -226,8 +198,7 @@
 								客户描述 
 								</td>
 								<td width="36%" align="left" class="even padl5">
-									
-									<input class="Wdate" type="text" id="ccontext" name="ccontext"  maxlength="32" value="${clientOne.ccontext }"/>
+									${clientOneInfo.ccontext }
 								</td>
 							</tr>
 							<tr>
@@ -236,13 +207,7 @@
 								客户所属区域 
 								</td>
 								<td width="36%" align="left" class="even padl5">
-									<!-- <input type= /> -->
-									
-									<select name="location" id="location" class="Wdate">
-									 <option value=${clientOne.clocation.aid } selected="selected">${clientOne.clocation.ashi }</option> 
-                        			   <option value=2>长沙</option>
-                          			   <option value=3>永州</option>
-                                       </select> 
+									${clientOneInfo.clocation.ashi }
 								</td>
 								         
 							</tr>
@@ -271,13 +236,9 @@
 						</table>
 						<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							<tr>
-								<td width="50%" align="right" class="padr5">
-									 <input type="submit" name="button" id="" value="确定" class="button">
-										<%-- <button id="updateSubmit" val="${clientOne.cid }" class="button" name="button">提交</button> --%>	</td>
 								<td width="50%" align="left" class="padl5">
 								<!-- <input type="button" id="testButton" onclick="test1()" value="测试"/> -->
-									<input name="button1"  type="button" class="button"
-										onClick="history.go(-1);" value="返 回">
+									<a href="showAllClient"  class="button" value="">返 回</a>
 								</td>
 							</tr>
 						</table>

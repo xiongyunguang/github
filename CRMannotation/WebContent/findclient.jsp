@@ -63,7 +63,7 @@ String applicationPath = basePath + "/" + "application";
 	  
 		  <tr>
  
-                  <th width="3%" nowrap class="COLLECTION"> 
+                  <th width="5%" nowrap class="COLLECTION"> 
                     姓名</th>
                              <th width="3%" nowrap class="COLLECTION"> 
                     性别</th> 
@@ -77,18 +77,18 @@ String applicationPath = basePath + "/" + "application";
                     <th width="7%" nowrap class="COLLECTION"> 
                    
                     状态</th>
-                  <th width="7%" nowrap class="COLLECTION"> 
+                  <th width="5%" nowrap class="COLLECTION"> 
                   
                   客户描述</th>
                   <th width="7%" nowrap class="COLLECTION"> 
                   
                  客户所属区域 </th>
-                  <th width="7%" nowrap class="COLLECTION"> 
+                 <!--  <th width="7%" nowrap class="COLLECTION"> 
                   
-                    照片</th>
-                  <th width="7%" nowrap class="COLLECTION"> 
+                    照片</th> -->
+                 <!--  <th width="7%" nowrap class="COLLECTION"> 
                   
-                    所属员公</th>
+                    所属员工</th> -->
                  
                  
                   <th width="7%" nowrap class="COLLECTION"> 
@@ -103,7 +103,7 @@ String applicationPath = basePath + "/" + "application";
         <c:forEach var="client" items="${allClient }">
          <tr>
  
-                  <th width="3%" nowrap class="COLLECTION"> 
+                  <th width="5%" nowrap class="COLLECTION"> 
                    ${client.cname }</th>
                              <th width="3%" nowrap class="COLLECTION"> 
                  ${client.csex }</th> 
@@ -116,21 +116,23 @@ String applicationPath = basePath + "/" + "application";
                     <th width="7%" nowrap class="COLLECTION"> 
                    
                    ${client.cstate }</th>
-                  <th width="7%" nowrap class="COLLECTION"> 
+                  <th width="5%" nowrap class="COLLECTION"> 
                   
                     ${client.ccontext }</th>
                   <th width="7%" nowrap class="COLLECTION"> 
                   
                   湖南${client.clocation.ashi }</th>
                   
-                  <th width="7%" nowrap class="COLLECTION"> 
+                  <%-- <th width="7%" nowrap class="COLLECTION"> 
                   
-                  ${client.userid.uname }</th>
+                  ${client.userid.uname }</th> --%>
                  
                  
                   <th width="7%" nowrap class="COLLECTION"> 
                   
-                  <a href="showOneClient?cid=${client.cid }">修改</a>  </th>
+                  <a style="font-size: 13px;font-weight: bold;color:#003893; " href="showOneClient?cid=${client.cid }&option=1">修改</a>
+                  <a style="font-size: 13px;font-weight: bold;color:#003893; " href="showOneClient?cid=${client.cid }&option=2">&nbsp;&nbsp;&nbsp;&nbsp;查看</a>
+                    </th>
                  
 		  </tr>
  		</c:forEach>

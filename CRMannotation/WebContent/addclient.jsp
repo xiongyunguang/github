@@ -87,9 +87,19 @@ function checkform() {
 								<td width="14%" align="right" class="COLLECTION">
 									电话：
 								</td>
+								<script>
+									function checkPhone() {
+										var phone=document.getElementById("cphone").value;
+										if(!(/^1[34578]\d{9}$/.test(phone))){
+											alert("手机号码有误，请重填");
+											document.getElementById("cphone").value='';
+										}
+									}
+								
+								</script>
 								<td width="36%" align="left" class="even padl5">
-									<input type=text name="cphone" required="required" maxlength="32" class="inputnormal"
-										value="">
+									<input type=text name="cphone" id="cphone" required="required" onblur="checkPhone()" 
+									 class="inputnormal" value="">
 								</td>
 							</tr>
 							<tr>
@@ -97,8 +107,19 @@ function checkform() {
 								<td width="14%" align="right" class="COLLECTION">
 									邮箱：
 								</td>
+								<script>
+									function checkEmail() {
+										var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$");
+										var email=document.getElementById("cemail").value;
+										if(!(reg.test(email))){
+											alert("邮箱有误，请重填");
+											document.getElementById("cemail").value='';
+										}
+									}
+								
+								</script>
 								<td width="36%" align="left" class="even padl5">
-									<input type=text name="cemail" required="required" maxlength="32"
+									<input type=text name="cemail" id="cemail" required="required" onblur="checkEmail()" maxlength="32"
 										class="inputnormal" value="">
 								</td>
 							</tr>
@@ -170,7 +191,7 @@ function checkform() {
 								</td>
 								<td width="36%" align="left" class="even padl5">
 									
-									<input class="Wdate" type="text" name="cuid" required="required"  maxlength="32" />
+									<input class="Wdate" type="text" name="cuid"  maxlength="32" />
 								</td>
 							</tr>
 							
@@ -182,8 +203,8 @@ function checkform() {
 										name="button" value="保 存" class="button">-->
 										<button onclick="javascript:return(checkform());" class="button" name="button">保存</button>								</td>
 								<td width="50%" align="left" class="padl5">
-									<input name="button1" type="button" class="button"
-										onClick="history.go(-1);" value="返 回">
+									<a href="showAllClient" name="button1" type="button" class="button"
+										onClick="history.go(-1);" >返 回</a>
 								</td>
 							</tr>
 						</table>

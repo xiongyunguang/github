@@ -13,8 +13,8 @@ public interface ClientService {
 	public List<ClientVO> showAllClient(UserVO user);
 	
 	//录入新增用户信息
-	public boolean addClient(ClientVO c); 
-	
+	public boolean addClient(ClientVO c,String clocation,String cuid); 
+		
 	//修改信息
-	public boolean changeClient(ClientVO c);
+	public boolean changeClient(ClientVO c,String clocation);
 }
