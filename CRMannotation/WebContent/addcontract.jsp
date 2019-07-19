@@ -48,60 +48,53 @@ $(document).ready(function(){
 			$("#span4").text("请输入合同时间！");
 			document.getElementById("span4").style.display="";
 		}else{
-			document.getElementById("span4").style.display="none";
+			if(condate.search(/((?!0000)[0-9]{4}-((0[1-9]|1[0-2])-(0[1-9]|1[0-9]|2[0-8])|(0[13-9]|1[0-2])-(29|30)|(0[13578]|1[02])-31)|([0-9]{2}(0[48]|[2468][048]|[13579][26])|(0[48]|[2468][048]|[13579][26])00)-02-29)/)!=-1){			
+				document.getElementById("span4").style.display="none";
+			}else{
+				$("#span4").text("请输入正确的时间格式，yyyy-mm-dd");
+				document.getElementById("span4").style.display="";
+			}
 		}
 	})
-	//合同状态
-/*	$("#constatus").blur(function(){
-		var constatus=$("#constatus").val();
-		if(constatus==""){
-			$("#span5").text("请输入合同状态！");
-			document.getElementById("span5").style.display="";
-		}else{
-			document.getElementById("span5").style.display="none";
-		}
-	})
-	//客户名字
-	$("#conclient").blur(function(){
-		var conclient=$("#conclient").val();
-		if(conclient==""){
-			$("#span6").text("请输入客户名字！");
-			document.getElementById("span6").style.display="";
-		}else{
-			document.getElementById("span6").style.display="none";
-		}
-	})
-	//员工名字
-	$("#conuser").blur(function(){
-		var conuser=$("#conuser").val();
-		if(conuser==""){
-			$("#span7").text("请输入员工名字！");
-			document.getElementById("span7").style.display="";
-		}else{
-			document.getElementById("span7").style.display="none";
-		}
-	})*/
-	
-	
 })
-
-
-
-function fromSubmit(){
-	if(document.addForm.conimg.value==""
-			 || document.addForm.contitle.value==""
-			 || document.addForm.condetails.value==""
-			 || document.addForm.condate.value==""
-			 || document.addForm.constatus.value==""
-			 || document.addForm.conclient.value==""
-			 || document.addForm.conuser.value==""){
-		alert("请输入完整信息！");
-		return false;
+function yanzheng(){
+	var conimg=$("#conimg").val();
+	if(conimg.search(/(.*)\.(jpg|bmp|gif|ico|pcx|jpeg|tif|png|raw|tga)$/)!=-1){
+		document.getElementById("span1").style.display="none";
+		
+		var condate=$("#condate").val();
+		if (condate.search(/((?!0000)[0-9]{4}-((0[1-9]|1[0-2])-(0[1-9]|1[0-9]|2[0-8])|(0[13-9]|1[0-2])-(29|30)|(0[13578]|1[02])-31)|([0-9]{2}(0[48]|[2468][048]|[13579][26])|(0[48]|[2468][048]|[13579][26])00)-02-29)/) != -1) {
+			document.getElementById("span4").style.display = "none";
+			return true;
+		} else {
+			$("#span4").text("请输入正确的时间格式，yyyy-mm-dd");
+			document.getElementById("span4").style.display = "";
+		}
 	}else{
-		return true;
+		$("#span1").text("请添加图片！");
+		document.getElementById("span1").style.display="";
 	}
+	return false;
 }
+	function fromSubmit() {
+		if (document.addForm.conimg.value == ""
+				|| document.addForm.contitle.value == ""
+				|| document.addForm.condetails.value == ""
+				|| document.addForm.condate.value == ""
+				|| document.addForm.constatus.value == ""
+				|| document.addForm.conclient.value == ""
+				|| document.addForm.conuser.value == "") {
+			alert("请输入完整信息！");
+			return false;
+		} else {
+			if (yanzheng()) {
 
+				return true;
+			} else {
+				return false;
+			}
+		}
+	}
 </script>
 
  
@@ -176,7 +169,7 @@ function fromSubmit(){
 								</td>
 								<td width="36%" align="left" class="even padl5">
 									<select name="constatus" id="constatus" maxlength="32" class="inputnormal"
-									 onchange="this.options[this.selectedIndex].innerText">
+									 onchange="this.options[this.selectedIndex].innerText" style="width:148px">
 										<option value="0">未完成</option>
 										<option value="1">已完成</option>
 										<option value="2">已归档</option>
@@ -191,10 +184,10 @@ function fromSubmit(){
 								</td>
 								<td width="36%" align="left" class="even padl5">
 									<select name="conclient" id="conclient" maxlength="32" class="inputnormal"
-									 onchange="this.options[this.selectedIndex].innerText">
-										<option value="1">熊</option>
-										<option value="2">熊大</option>
-										<option value="3">熊二</option>
+									 onchange="this.options[this.selectedIndex].innerText" style="width:148px">
+									 	<c:forEach var="client" items="${sessionScope.Conclient}">
+									 		<option value="${client.cid}">${client.cname}</option>
+									 	</c:forEach>
 									</select>
 								<!-- <font color="red" id="span6">*</font> -->
 								</td>
@@ -207,12 +200,9 @@ function fromSubmit(){
 								</td>
 								<td width="36%" align="left" class="even padl5">
 									<select name="conuser" id="conuser" maxlength="32" class="inputnormal"
-									 onchange="this.options[this.selectedIndex].innerText">
+									 onchange="this.options[this.selectedIndex].innerText" style="width:148px">
 										<option value="1">熊</option>
-										<option value="2">熊大</option>
-										<option value="3">熊二</option>
 									</select>
-								<!-- 	<font color="red" id="span7">*</font> -->
 								</td>
 							</tr> 
 						 

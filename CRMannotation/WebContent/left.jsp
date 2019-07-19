@@ -108,7 +108,7 @@ function loginout(){
 										</TR>
 										<TR>
 											<TD width="2%"><IMG src="abc/closed.gif"></TD>
-											<TD height=23><A href="addcontract.jsp" target=main>新增合同</A>
+											<TD height=23><A href="showAllConclient" target=main>新增合同</A>
 											</TD>
 										</TR>
 

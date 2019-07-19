@@ -22,9 +22,9 @@ public class ContractServiceImpl implements ContractService {
 		boolean i=contractDao.addNewContract(c);
 		String back="";
 		if(i) {
-			back="Ìí¼Ó³É¹¦£¡";
+			back="æ·»åŠ æˆåŠŸï¼";
 		}else {
-			back="Ìí¼ÓÊ§°Ü£¡";
+			back="æ·»åŠ å¤±è´¥ï¼";
 		}
 		return back;
 	}
@@ -40,9 +40,9 @@ public class ContractServiceImpl implements ContractService {
 		boolean i=contractDao.changeContract(c);
 		String back="";
 		if(i) {
-			back="ĞŞ¸Ä³É¹¦£¡";
+			back="ä¿®æ”¹æˆåŠŸï¼";
 		}else {
-			back="ĞŞ¸ÄÊ§°Ü£¡";
+			back="ä¿®æ”¹å¤±è´¥ï¼";
 		}
 		return back;
 	}
