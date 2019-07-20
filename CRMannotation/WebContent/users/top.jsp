@@ -17,7 +17,7 @@
           <td width="320" align="left"> 
           
 		      <span class="top_link"> </span> <a class="top_link" 
-            href="#" >当前用户:${sessionScope.admin.AName}</a> </td>
+            href="#" >当前用户:${sessionScope.user.uname}</a> </td>
               
           <td width="80" align="right" nowrap="nowrap" class="topbar"> </td>
           <td class="topbar">&nbsp;</td>

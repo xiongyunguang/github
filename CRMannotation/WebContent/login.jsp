@@ -128,7 +128,7 @@ function login() {
       </tr>
     </table></td>
     <td width="195" background="abc/login_2.gif"><table width="190" height="106" border="0" align="center" cellpadding="2" cellspacing="0">
-      <form name="form1" method="post" action="showOneUser" enctype＝application/x-www-form-urlencoded>
+      <form name="form1" method="post" action="loginuser" enctype＝application/x-www-form-urlencoded>
             <tr>
               <td height="50" colspan="2" align="left">&nbsp;</td>
             </tr>

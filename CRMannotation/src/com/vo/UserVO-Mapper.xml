@@ -28,7 +28,7 @@
   
   <!-- 传入用户对象(经理)     查询所管理用户(员工) -->
  <select id="showOwnerUser"  parameterType="com.vo.UserVO"  resultMap="user">
-  	SELECT * FROM USER,ADDRESS  WHERE  USER.UOWNER=#{uowner} AND  USER.UADDRESS=ADDRESS.AID
+  	SELECT * FROM USER,ADDRESS  WHERE  USER.UPASSWORD=#{upassword} AND  USER.UACCOUND=#{uaccound} AND USER.UADDRESS=ADDRESS.AID
   </select>
   <!-- !!!!!!!!!!! -->
   <!-- 传入用户对象         修改员工的在职状态     changeUType -->
