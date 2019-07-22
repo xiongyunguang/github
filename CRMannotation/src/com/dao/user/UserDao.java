@@ -9,6 +9,9 @@ import com.vo.UserVO;
 
 public interface UserDao {
 	
+	//传入用户对象根据用户名   密码     返回数据库中对应的用户数据
+	public UserVO showUser(UserVO u);
+	
 	//传入用户对象根据用户id 返回数据库中对应的用户数据
 	public UserVO showOneUser(UserVO u);
 	

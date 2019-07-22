@@ -94,4 +94,10 @@ public class UserDaoImpl extends SqlSessionDaoSupport implements UserDao {
 		return list;
 	}
 
+	@Override//ÓÃ»§µÇÂ¼
+	public UserVO showUser(UserVO u) {
+		UserVO  uvo=this.getSqlSessionTemplate().selectOne("showUser", u);		
+		return uvo;
+	}
+
 }

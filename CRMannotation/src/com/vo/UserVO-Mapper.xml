@@ -21,6 +21,10 @@
   </resultMap>
 
 <!-- sql配置部分 -->  
+<!-- 登录     传入用户对象根据用户名    密码    返回数据库中对应的用户数据 -->
+  <select id="showUser"  parameterType="com.vo.UserVO"  resultMap="user">
+  	SELECT * FROM USER,ADDRESS  WHERE  USER.UPASSWORD=#{upassword} AND USER.UACCOUNT=#{uaccount} AND USER.UADDRESS=ADDRESS.AID
+  </select>
 <!-- 传入用户对象根据用户id    返回数据库中对应的用户数据 -->
   <select id="showOneUser"  parameterType="com.vo.UserVO"  resultMap="user">
   	SELECT * FROM USER,ADDRESS  WHERE  USER.UID=#{uid} AND  USER.UADDRESS=ADDRESS.AID
@@ -28,7 +32,7 @@
   
   <!-- 传入用户对象(经理)     查询所管理用户(员工) -->
  <select id="showOwnerUser"  parameterType="com.vo.UserVO"  resultMap="user">
-  	SELECT * FROM USER,ADDRESS  WHERE  USER.UPASSWORD=#{upassword} AND  USER.UACCOUND=#{uaccound} AND USER.UADDRESS=ADDRESS.AID
+  	SELECT * FROM USER,ADDRESS  WHERE  USER.UOWNER=#{uowner} AND USER.UADDRESS=ADDRESS.AID
   </select>
   <!-- !!!!!!!!!!! -->
   <!-- 传入用户对象         修改员工的在职状态     changeUType -->

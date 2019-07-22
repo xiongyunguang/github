@@ -8,7 +8,10 @@ import com.vo.JobVO;
 import com.vo.UserVO;
 
 public interface UserService {
-	//传入用户对象根据用户id 返回数据库中对应的用户数据
+		//传入用户对象根据用户名   密码     返回数据库中对应的用户数据
+		public UserVO showUser(UserVO u);
+		
+		//传入用户对象根据用户id 返回数据库中对应的用户数据
 		public UserVO showOneUser(UserVO u);
 		
 		//传入用户对象(经理) 查询所管理用户(员工)

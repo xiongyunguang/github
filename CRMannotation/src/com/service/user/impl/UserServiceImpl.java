@@ -19,6 +19,13 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	public UserDao userDao;
 
+	//传入用户对象根据用户名   密码     返回数据库中对应的用户数据
+	public UserVO showUser(UserVO u) {
+		UserVO  vo = userDao.showUser(u);
+		return vo;
+	}
+		
+	
 	@Override
 	public UserVO showOneUser(UserVO u) {
 		UserVO  vo = userDao.showOneUser(u);

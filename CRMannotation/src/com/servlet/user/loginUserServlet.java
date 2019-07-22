@@ -25,7 +25,7 @@ public class loginUserServlet {
 		uvo.setUpassword(arg0.getParameter("password"));
 		uvo.setUaccount(arg0.getParameter("account"));
 		
-		UserVO  uu=userService.showOneUser(uvo);
+		UserVO  uu=userService.showUser(uvo);
 		if(uu!=null) {
 			arg0.getSession().setAttribute("user",uu);
 			// 标识  upost   用户职务(经理0、员工1)
